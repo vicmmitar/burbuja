@@ -8,7 +8,7 @@ public class Burbuja {
         n=Integer.parseInt(leer.nextLine());
         int[] vector=new int[n];
         leerVector(n, vector);
-        burbuja(n, vector);
+        burbuja_descendente(n, vector);
         imprimirVector(n, vector);
     }
 
@@ -28,9 +28,26 @@ public class Burbuja {
         }
     }
     private static void burbuja(int n, int[] vector) {
+        int aux;
         for(int i=0;i<n-1;i++){
             for(int j=i+1;j<n;j++){
-                if(vector[i]<vector[j]) vector[i] = vector[j];
+                if(vector[i]<vector[j]) {
+                    aux=vector[i];
+                    vector[i] = vector[j];
+                    vector[j]=aux;
+                }
+            }
+        }
+    }
+    private static void burbuja_descendente(int n, int[] vector) {
+        int aux;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                if(vector[i]>vector[j]) {
+                    aux=vector[i];
+                    vector[i] = vector[j];
+                    vector[j]=aux;
+                }
             }
         }
     }
